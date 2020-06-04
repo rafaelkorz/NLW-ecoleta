@@ -35,6 +35,11 @@
   #page-create-point .field-group .field + .field {
     margin-left: 0;
   }
+
+  #page-create-point form {
+    min-width: 580px;
+  }   
+
 }
 
 @media (min-width: 1700px) {
@@ -48,3 +53,36 @@
     background-position-y: 200px;
   }
 }
+
+@media (max-width: 600px){
+
+  #page-create-point form {
+      margin: 30px auto;
+      padding: 10px;
+  }
+
+  #page-create-point form h1{
+      font-size: 25px;
+  }
+
+  #page-create-point form fieldset{
+      margin-top: 30px;
+  }
+
+  #page-create-point form legend {
+      display: block;
+  }
+
+  #page-create-point form legend h2{
+      font-size: 19px;
+  }
+
+  #page-create-point .items-grid{
+      grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+
+
