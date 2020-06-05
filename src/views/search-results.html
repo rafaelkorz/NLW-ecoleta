@@ -2,9 +2,9 @@
 
 {%set pageId = "page-search-results"%}
 
-{% block modal %}
+{% block title %}
 <title>Criar um ponto de coleta</title>
-{% endblock modal %}
+{% endblock title %}
 
 {% block styles %}
 <link rel="stylesheet" href="/styles/search-results.css">
@@ -14,34 +14,32 @@
 {% include "partials/page-header.html" %}
 
 <main>
-  <h4>
-    <strong>2 pontos </strong> encontrados
-  </h4>
 
-  <div class="cards">
-    <div class="card">
-      <img src="https://miro.medium.com/max/2000/1*ciLg4-fezXdbaunhk1E6gQ.jpeg" alt="Calectoria">
-      <h1>Colectoria</h1>
-      <h3>Resídios Eletrônicos, Lâmpadas</h3>
-      <p>
-        Rio do sul, Santa Catarina <br />
-        Guilherme Genballa, Jardim América <br />
-        Número 260
-      </p>
+  {% if total > 0 %}
+    <h4>
+      <strong>{{total}} pontos </strong> encontrados
+    </h4>
 
-    </div>
+    <div class="cards">
 
-    <div class="card">
-      <img src="https://miro.medium.com/max/1000/1*fGcpmiNoTqePxtAdGoNXuQ.jpeg" alt="Calectoria">
-      <h1>Papersider</h1>
-      <h3>Papéis e Papelão</h3>
-      <p>
-        Rio do sul, Santa Catarina <br />
-        Guilherme Genballa, Jardim América <br />
-        Número 260
-      </p>
+      {% for place in places %}
+      <div class="card">
+        <img src="{{place.image}}" alt="{{place.name}}">
+        <h1>{{ place.name }}</h1>
+        <h3>{{ place.items }}</h3>
+        <p>
+          {{ place.city }}, {{ place.state }} <br />
+          {{ place.address }}, {{ place.address2 }} <br />
+        </p>
 
-    </div>
-  </div>
+      </div>
+      {% endfor %}
+    </div>      
+
+  {% else %}
+    <h4><strong>Nenhum</strong> local encontrado</h4>
+  {% endif %}
+
+
 </main>
 {% endblock content %}
